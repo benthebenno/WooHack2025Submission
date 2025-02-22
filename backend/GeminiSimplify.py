@@ -8,8 +8,14 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 
 client = genai.Client(api_key=api_key)
+
+jargonfile = "jargony jargon jargon" # file would go here
+
 response = client.models.generate_content(
-        model="gemini-2.0-flash",contents="Can you translate this jargon into vernacular that is understandable to the average person?"
+        model='gemini-2.0-flash',
+        contents=['Can you translate this jargon into vernacular that is understandable to the average person?',
+                  jargonfile
+                  ]
         )
 
 
