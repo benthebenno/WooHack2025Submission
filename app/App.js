@@ -14,12 +14,24 @@ export default function App() {
     return <Main></Main>;
   }
 
+  function InterestingScreen() {
+    return <Interesting></Interesting>;
+  }
+  function AirportScreen() {
+    return <AirportScreen></AirportScreen>;
+  }
+
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
         <Stack.Screen name="Main" component={MainScreen}></Stack.Screen>
+        <Stack.Screen
+          name="Interesting"
+          component={InterestingScreen}
+        ></Stack.Screen>
+        <Stack.Screen name="Airport" component={AirportScreen}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
