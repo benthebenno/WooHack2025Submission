@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/home";
 import Main from "./screens/main";
+import Airport from "./screens/airport";
 
 export default function App() {
   // const customData = require("./data/test.json");
@@ -18,7 +19,7 @@ export default function App() {
     return <Interesting></Interesting>;
   }
   function AirportScreen() {
-    return <AirportScreen></AirportScreen>;
+    return <Airport></Airport>;
   }
 
   const Stack = createNativeStackNavigator();

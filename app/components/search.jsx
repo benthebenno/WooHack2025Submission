@@ -4,8 +4,10 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import colors from "../constants/colors";
 import { Animated } from "react-native";
 import { useAnimatedValue } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function SearchBar() {
+  const navigation = useNavigation();
   const [text, onChangeText] = React.useState("");
   const [number, onChangeNumber] = React.useState("");
   const planePos = useAnimatedValue(0);
@@ -19,6 +21,10 @@ export default function SearchBar() {
   };
   const HasSearched = () => {
     movePlane();
+    setTimeout(
+      () => navigation.navigate("Airport", { searchItem: text }),
+      3000
+    );
   };
   return (
     <View style={styles.container}>
