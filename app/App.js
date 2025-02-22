@@ -13,6 +13,7 @@ export default function App() {
   function MainScreen() {
     return <Main></Main>;
   }
+
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
