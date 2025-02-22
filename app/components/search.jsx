@@ -35,6 +35,7 @@ export default function SearchBar() {
           onChangeText={onChangeText}
           value={text}
           onSubmitEditing={() => HasSearched()}
+          autoCapitalize="characters"
         ></TextInput>
         <Animated.View style={{ transform: [{ translateX: planePos }] }}>
           <FontAwesome5 name="plane" size={24} color="blue" />
