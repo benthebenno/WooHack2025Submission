@@ -32,7 +32,6 @@ td_elements = soup.find_all(
     lambda tag: tag.name == 'td' and '(launches your MP3 player)' in tag.get_text()
 )
 
-# Print results
 for td in td_elements:
     print(td)
     print("-----")
