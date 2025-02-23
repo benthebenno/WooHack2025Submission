@@ -55,7 +55,6 @@ def preprocess_audio(file_path, save_path=None):
     print("🚀 Preprocessing complete!")
     return y_final, sr
 
-# Example usage:
 if __name__ == "__main__":
     input_dir = "Raw_Sound/"
     output_dir = "Processed_Sound/"
