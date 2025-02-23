@@ -1,11 +1,18 @@
-import { View, Text, container, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  container,
+  StyleSheet,
+  TextInput,
+  Pressable,
+} from "react-native";
 import React from "react";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import colors from "../constants/colors";
 import { Animated } from "react-native";
 import { useAnimatedValue } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
+import Ionicons from "@expo/vector-icons/Ionicons";
 export default function SearchBar() {
   const navigation = useNavigation();
   const [text, onChangeText] = React.useState("");
@@ -29,6 +36,21 @@ export default function SearchBar() {
   return (
     <View style={styles.container}>
       <View style={styles.search}>
+        <View
+          style={{
+            height: "100%",
+            justifyContent: "center",
+            marginRight: 20,
+          }}
+        >
+          <Pressable>
+            <Ionicons
+              name="arrow-back-circle-outline"
+              size={36}
+              color="black"
+            />
+          </Pressable>
+        </View>
         <TextInput
           placeholder="Search any airport code"
           style={styles.textInput}
@@ -37,7 +59,14 @@ export default function SearchBar() {
           onSubmitEditing={() => HasSearched()}
           autoCapitalize="characters"
         ></TextInput>
-        <Animated.View style={{ transform: [{ translateX: planePos }] }}>
+        <Animated.View
+          style={{
+            height: "100%",
+            justifyContent: "center",
+            transform: [{ translateX: planePos }],
+            marginLeft: 20,
+          }}
+        >
           <FontAwesome5 name="plane" size={24} color="blue" />
         </Animated.View>
       </View>
@@ -51,7 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  textInput: { width: "80%" },
+  textInput: { width: "60%" },
   search: {
     width: "90%",
     backgroundColor: "white",

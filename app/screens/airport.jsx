@@ -3,6 +3,7 @@ import React from "react";
 import Screen from "../components/screen";
 import { useRoute } from "@react-navigation/native";
 import SearchBar from "../components/search";
+import InfoList from "../components/infoList";
 export default function Airport() {
   const route = useRoute();
   const search = route.params.searchItem;
@@ -10,6 +11,7 @@ export default function Airport() {
     <Screen>
       <SearchBar></SearchBar>
       <Text style={{ fontSize: 50, color: "white" }}>{search}</Text>
+      <InfoList></InfoList>
     </Screen>
   );
 }

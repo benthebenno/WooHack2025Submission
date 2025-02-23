@@ -19,20 +19,27 @@ export default function InfoList() {
       text: "text fefefkeofkeofkebfbfbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffokefoekfoekf",
     },
   ];
-  const Item = ({ title }) => (
+  const Item = ({ title, text }) => (
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
+      <Text>{text}</Text>
     </View>
   );
   return (
     <FlatList
       data={TESTDATA}
-      renderItem={({ item }) => <Item title={item.title} />}
+      renderItem={({ item }) => <Item title={item.title} text={item.text} />}
       keyExtractor={(item) => item.id}
     ></FlatList>
   );
 }
 
 const styles = StyleSheet.create({
-  item: { flex: 1, backgroundColor: "white", margin: 20, borderRadius: 20 },
+  item: {
+    flex: 1,
+    backgroundColor: "white",
+    margin: 20,
+    borderRadius: 20,
+    padding: 20,
+  },
 });
