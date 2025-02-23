@@ -6,37 +6,32 @@ import noisereduce as nr
 import soundfile as sf
 
 def load_audio(file_path, target_sr=16000):
-    """ Load audio file and convert to target sample rate """
     y, sr = librosa.load(file_path, sr=target_sr)
     return y, sr
 
 def denoise_audio(y, sr):
-    """ Apply noise reduction using noisereduce """
-    return nr.reduce_noise(y=y, sr=sr,prop_decrease=0.4)
+    return nr.reduce_noise(y=y, sr=sr)
 
 def apply_bandpass_filter(y, sr, lowcut=150, highcut=5000, order=5):
-    """ Apply bandpass filter to enhance speech frequencies """
     nyquist = 0.5 * sr
     low = lowcut / nyquist
     high = highcut / nyquist
     b, a = signal.butter(order, [low, high], btype="band")
     return signal.filtfilt(b, a, y)
 
-
+#normalize the audio to a target volume
 def rms_normalize(y, target_dB=-20):
-    """ Normalize volume based on RMS level """
-    rms = np.sqrt(np.mean(y**2))  # Calculate RMS
-    target_rms = 10 ** (target_dB / 20)  # Convert dB to linear scale
-    return y * (target_rms / rms)  # Scale audio to target RMS
+    rms = np.sqrt(np.mean(y**2))  
+    target_rms = 10 ** (target_dB / 20) 
+    return y * (target_rms / rms)  
 
 def to_mono(y):
-    """ Convert stereo to mono by averaging channels """
+    # if stereo, we average the channels to convert it to mono
     if len(y.shape) > 1:  
         return np.mean(y, axis=0)
     return y  
 
 def preprocess_audio(file_path, save_path=None):
-    """ Full preprocessing pipeline: load, denoise, filter, normalize, convert to mono """
     print(" Loading audio...")
     y, sr = load_audio(file_path)
 
@@ -61,8 +56,8 @@ def preprocess_audio(file_path, save_path=None):
 
 # Example usage:
 if __name__ == "__main__":
-    input_audio = 'Test Audio 4.wav'  # Change this to your input file
-    output_audio = "atc_audio.wav"  # Change this to your desired output
+    input_audio = 'Test Audio 4.wav'      
+    output_audio = "atc_audio.wav"  
 
     y_processed, sr_processed = preprocess_audio(input_audio, output_audio)
 
