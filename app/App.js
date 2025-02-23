@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/home";
 import Main from "./screens/main";
 import Airport from "./screens/airport";
+import Tutorial from "./screens/tutorial";
 export default function App() {
   function HomeScreen() {
     return <Home></Home>;
@@ -20,6 +21,9 @@ export default function App() {
     return <Airport></Airport>;
   }
 
+  function TutorialScreen() {
+    return <Tutorial></Tutorial>;
+  }
   const Stack = createNativeStackNavigator();
 
   return (
@@ -32,6 +36,7 @@ export default function App() {
           component={InterestingScreen}
         ></Stack.Screen>
         <Stack.Screen name="Airport" component={AirportScreen}></Stack.Screen>
+        <Stack.Screen name="Tutorial" component={TutorialScreen}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
