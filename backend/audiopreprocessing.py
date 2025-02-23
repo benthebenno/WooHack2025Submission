@@ -4,13 +4,15 @@ import librosa.display
 import scipy.signal as signal
 import noisereduce as nr
 import soundfile as sf
+import os
+import glob
 
 def load_audio(file_path, target_sr=16000):
     y, sr = librosa.load(file_path, sr=target_sr)
     return y, sr
 
 def denoise_audio(y, sr):
-    return nr.reduce_noise(y=y, sr=sr)
+    return nr.reduce_noise(y=y, sr=sr, prop_decrease=0.9)
 
 def apply_bandpass_filter(y, sr, lowcut=150, highcut=5000, order=5):
     nyquist = 0.5 * sr
@@ -56,8 +58,16 @@ def preprocess_audio(file_path, save_path=None):
 
 # Example usage:
 if __name__ == "__main__":
-    input_audio = 'Test Audio 4.wav'      
-    output_audio = "atc_audio.wav"  
+    input_dir = "Raw_Sound/"
+    output_dir = "Processed_Sound/"
 
-    y_processed, sr_processed = preprocess_audio(input_audio, output_audio)
+    os.makedirs(output_dir,exist_ok=True)
+
+    for input_audio in glob.glob(os.path.join(input_dir,"*.mp3")):
+        filename=os.path.basename(input_audio) #extracts just filename
+        output_audio = os.path.join(output_dir,filename) 
+    
+
+        print(f"Processing {filename}...")
+        y_processed, sr_processed = preprocess_audio(input_audio, output_audio)
 
