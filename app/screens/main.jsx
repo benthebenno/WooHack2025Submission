@@ -1,16 +1,16 @@
 import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Screen from "../components/screen";
 import SearchBar from "../components/search";
 import InfoList from "../components/infoList";
 import colors from "../constants/colors";
-
+import data from "../data/important.json";
 export default function Main() {
   return (
     <Screen>
       <SearchBar></SearchBar>
       <Text style={styles.text}>Import Updates</Text>
-      <InfoList></InfoList>
+      <InfoList data={data}></InfoList>
     </Screen>
   );
 }
