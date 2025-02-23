@@ -7,7 +7,6 @@ import Main from "./screens/main";
 import Airport from "./screens/airport";
 
 export default function App() {
-  // const customData = require("./data/test.json");
   function HomeScreen() {
     return <Home></Home>;
   }
