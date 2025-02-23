@@ -29,12 +29,20 @@ export default function SearchBar() {
       useNativeDriver: true,
     }).start();
   };
+  const movePlaneBack = () => {
+    Animated.timing(planePos, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  };
   const HasSearched = () => {
     movePlane();
-    setTimeout(
-      () => navigation.navigate("Airport", { searchItem: value }),
-      2000
-    );
+
+    setTimeout(() => {
+      movePlaneBack();
+      navigation.navigate("Airport", { searchItem: value });
+    }, 2000);
   };
 
   const [data, setData] = useState([
@@ -52,7 +60,7 @@ export default function SearchBar() {
             marginRight: 20,
           }}
         >
-          <Pressable onPress={() => navigation.navigate("Main")}>
+          <Pressable onPress={() => navigation.navigate("Home")}>
             <Ionicons
               name="arrow-back-circle-outline"
               size={36}
