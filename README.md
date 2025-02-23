@@ -2,6 +2,12 @@
 
 ## How to get Gemini up and running
 
-Since we store the API key using `python-dotenv`, you have to build your own `.env` file. Once you do, add the following:
-`APIKEY = "{insert API key here}"` 
-Then all should be well:)
+To start you need to create a .env file in the backend directory. To do this please navigate to the backend directory and use the following command:
+
+```touch .env```
+
+Next make your way [here](https://ai.google.dev/gemini-api/docs/api-key) to get a Gemini API key. Once you've got your key paste the following into your .env file: 
+
+APIKEY = Whatever_Your_API_Key_Is
+
+Once thats all set up gemini should be good to go! :)
