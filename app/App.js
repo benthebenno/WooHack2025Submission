@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/home";
 import Main from "./screens/main";
 import Airport from "./screens/airport";
-
 export default function App() {
   function HomeScreen() {
     return <Home></Home>;
@@ -22,6 +21,7 @@ export default function App() {
   }
 
   const Stack = createNativeStackNavigator();
+
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>

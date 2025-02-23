@@ -13,10 +13,13 @@ import { Animated } from "react-native";
 import { useAnimatedValue } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Dropdown } from "react-native-element-dropdown";
+import DropDownPicker from "react-native-dropdown-picker";
+import { useState } from "react";
 export default function SearchBar() {
   const navigation = useNavigation();
-  const [text, onChangeText] = React.useState("");
-  const [number, onChangeNumber] = React.useState("");
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
   const planePos = useAnimatedValue(0);
 
   const movePlane = () => {
@@ -29,10 +32,16 @@ export default function SearchBar() {
   const HasSearched = () => {
     movePlane();
     setTimeout(
-      () => navigation.navigate("Airport", { searchItem: text }),
+      () => navigation.navigate("Airport", { searchItem: value }),
       3000
     );
   };
+
+  const [data, setData] = useState([
+    { label: "CLE", value: "CLE" },
+    { label: "CAK", value: "CAK" },
+    { label: "CMH", value: "CMH" },
+  ]);
   return (
     <View style={styles.container}>
       <View style={styles.search}>
@@ -51,19 +60,24 @@ export default function SearchBar() {
             />
           </Pressable>
         </View>
-        <TextInput
-          placeholder="Search any airport code"
-          style={styles.textInput}
-          onChangeText={onChangeText}
-          value={text}
-          onSubmitEditing={() => HasSearched()}
-          autoCapitalize="characters"
-        ></TextInput>
+        <View style={styles.textInput}>
+          <DropDownPicker
+            open={open}
+            value={value}
+            items={data}
+            setOpen={setOpen}
+            setValue={setValue}
+            setItems={setData}
+            placeholder="Pick An Airport"
+            onChangeValue={() => HasSearched()}
+          />
+        </View>
         <Animated.View
           style={{
             height: "100%",
             justifyContent: "center",
             transform: [{ translateX: planePos }],
+            // backgroundColor: "red",
             marginLeft: 20,
           }}
         >
@@ -89,5 +103,18 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 20,
     flexDirection: "row",
+  },
+  placeholderStyle: {
+    fontSize: 16,
+    color: "black",
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+    color: "black",
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+    color: "black",
   },
 });
