@@ -32,7 +32,7 @@ processed_dir = "Processed_Sound/"
 
 client = genai.Client(api_key=api_key)
 
-prompt_text = "This is audio from Air Traffic Control. Consider the average person at an aiport. They dont want to learn all the jargon to understand the incoming audio signals, and just want someone to do it for them in a short, concise manner. Please give information that is relevant to the average person at the airport and be as informative as possible. Keep in mind this should be a brief synopsis overviewing whats going on and how the average airport go-er can expect this to effect their experience. In addition before writing anything please come up with a title for the interaction as a whole and preface it with [title] and end it with a $."
+prompt_text = "This is audio from Air Traffic Control. Consider the average person at an aiport. They dont want to learn all the jargon to understand the incoming audio signals, and just want someone to do it for them in a short, concise manner. Please give information that is relevant to the average person at the airport and be as informative as possible. Keep in mind this should be a brief synopsis overviewing whats going on and how the average airport go-er can expect this to effect their experience. This will be displayed on a message board of some sort so try not to speak directly to the audience. In addition before writing anything please come up with a title for the interaction as a whole and preface it with [title] and end it with a $ so for example a title might look like [title] Landing gear issues$. Double check your title, it should NOT be inside the square brackets. Make sure the title has the word title inside brackets like this [title] followed by the title and the $ symbol. Its imperative this portion is formated correctly."
 
 
 file_paths = glob.glob(os.path.join(processed_dir, "*.mp3"))
@@ -43,30 +43,11 @@ if not file_paths:
 
 # Loop through and process each file separately
 
-with open('../app/data/data.json', 'r') as file:
-    response_dict = json.load(file)
+response_dict = {}
 
 
-max_id = float('-inf')
-stack = [response_dict]
 
-while stack:
-    current = stack.pop()
-    if isinstance(current, dict):
-        # Check if the current dictionary has an 'id' field
-        if 'id' in current:
-            current_id = current['id']
-            if current_id > max_id:
-                max_id = current_id
-        # Add all values to the stack to check for nested structures
-        stack.extend(current.values())
-
-if max_id != float('-inf'):
-    print(f"The largest id found is {max_id}")
-else:
-    max_id = -1
-
-max_id = max_id + 1
+max_id = 0
 
 for file_path in file_paths:
     filename = os.path.basename(file_path)
@@ -82,14 +63,11 @@ for file_path in file_paths:
             {"file_data": {"file_uri": uploaded_file.uri}}
         ]
     )
-
-    if not response_dict:
-        response_dict.append({})
-
-    title_extract = extract_title_parts(response.text[0])
-    response_dict[0]["title"] = title_extract[0]
-    response_dict[0]["id"] = max_id
-    response_dict[0]["text"] = title_extract[1]
+    print(response.text)
+    title_extract = extract_title_parts(response.text)
+    response_dict["title"] = title_extract[0]
+    response_dict["id"] = max_id
+    response_dict["text"] = title_extract[1]
     max_id = max_id + 1
 
     with open("../app/data/data.json", 'r') as f:
