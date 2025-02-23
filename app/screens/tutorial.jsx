@@ -61,9 +61,15 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15,
   },
-  box: { backgroundColor: "white", borderWidth: 2 },
+  box: {
+    backgroundColor: "white",
+    borderWidth: 2,
+    margin: 30,
+    borderRadius: 10,
+    padding: 15,
+  },
   container: {
     alignItems: "center",
   },
-  text: { fontSize: 25 },
+  text: { fontSize: 25, textAlign: "center" },
 });

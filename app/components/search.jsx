@@ -33,7 +33,7 @@ export default function SearchBar() {
     movePlane();
     setTimeout(
       () => navigation.navigate("Airport", { searchItem: value }),
-      3000
+      2000
     );
   };
 
