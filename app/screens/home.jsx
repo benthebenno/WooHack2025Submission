@@ -21,7 +21,7 @@ export default function Home() {
   const movePlane = () => {
     // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(planePos, {
-      toValue: 350,
+      toValue: 325,
       duration: 5000,
       useNativeDriver: true,
     }).start();
@@ -29,7 +29,7 @@ export default function Home() {
 
   const movePlaneUp = () => {
     Animated.timing(planePosUp, {
-      toValue: -875,
+      toValue: -980,
       duration: 5000,
       useNativeDriver: true,
     }).start();
@@ -54,20 +54,25 @@ export default function Home() {
         // imageStyle={{ resizeMode: "contain" }}
       >
         <Text style={styles.text}>SkyWatch</Text>
+        <View style={{ marginTop: 350 }}></View>
         <Pressable onPress={() => navigator.navigate("Main")}>
           <Animated.View style={[styles.button, { opacity: opacity }]}>
             <Text style={styles.buttonText}>Learn About Your Flight</Text>
           </Animated.View>
         </Pressable>
-        {/* <FontAwesome name="plane" size={24} color="blue" /> */}
-
+        <View style={{ marginTop: 20 }}></View>
+        <Pressable onPress={() => navigator.navigate("Tutorial")}>
+          <Animated.View style={[styles.button, { opacity: opacity }]}>
+            <Text style={styles.buttonText}>App Tutorial</Text>
+          </Animated.View>
+        </Pressable>
         <View style={styles.planeHolder}>
           <Animated.View
             style={{
               transform: [{ translateX: planePos }, { translateY: planePosUp }],
             }}
           >
-            <FontAwesome name="plane" size={40} color="blue" />
+            <FontAwesome name="plane" size={40} color={colors.plane} />
           </Animated.View>
           <Animated.View
             style={{
@@ -78,7 +83,7 @@ export default function Home() {
               ],
             }}
           >
-            <FontAwesome name="plane" size={40} color="blue" />
+            <FontAwesome name="plane" size={40} color={colors.plane} />
           </Animated.View>
         </View>
       </View>
@@ -87,7 +92,7 @@ export default function Home() {
 }
 const styles = StyleSheet.create({
   button: {
-    marginTop: 350,
+    // marginTop: 350,
     backgroundColor: colors.font,
     flexShrink: 1,
     // width: 275,

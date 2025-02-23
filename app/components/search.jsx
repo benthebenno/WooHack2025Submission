@@ -81,7 +81,7 @@ export default function SearchBar() {
             marginLeft: 20,
           }}
         >
-          <FontAwesome5 name="plane" size={24} color="blue" />
+          <FontAwesome5 name="plane" size={24} color={colors.plane} />
         </Animated.View>
       </View>
     </View>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   textInput: { width: "60%" },
   search: {
     width: "90%",
-    backgroundColor: "white",
+    backgroundColor: "#d3d3d3",
     paddingLeft: 20,
     borderRadius: 10,
     paddingTop: 20,
