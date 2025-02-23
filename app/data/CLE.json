@@ -1,17 +1,7 @@
- [
+[
     {
-      "id": "1",
-      "title": "CLE",
-      "text": "text fefefkeofkeofkefokefoekfoekf"
-    },
-    {
-      "id": "2",
-      "title": "Title",
-      "text": "text fefefkefefefofkeofkefokefoekfoebfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffkf"
-    },
-    {
-      "id": "3",
-      "title": "Title",
-      "text": "text fefefkeofkeofkebfbfbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffokefoekfoekf"
+        "title": " Airport Activity Synopsis",
+        "id": 0,
+        "text": "\n\nAir traffic controllers are managing arrivals and departures, coordinating with pilots for visual approaches, runway assignments, and altitude adjustments. They're also providing traffic advisories to ensure safe separation between aircraft, including low-level helicopter traffic. These are all standard proceedures. There may be slight delays or changes to departure/arrival gate. Follow the airline's guidance and announcements for specific flight information."
     }
-  ]
+]

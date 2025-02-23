@@ -1,17 +1,7 @@
- [
+[
     {
-      "id": "1",
-      "title": "CAK",
-      "text": "text fefefkeofkeofkefokefoekfoekf"
-    },
-    {
-      "id": "2",
-      "title": "Title",
-      "text": "text fefefkefefefofkeofkefokefoekfoebfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffkf"
-    },
-    {
-      "id": "3",
-      "title": "Title",
-      "text": "text fefefkeofkeofkebfbfbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffokefoekfoekf"
+        "title": "Navigating Weather Conditions and Routine Communications",
+        "id": 0,
+        "text": "Multiple aircraft are communicating with air traffic control, managing descent altitudes and coordinating transitions to different control frequencies. One aircraft reports encountering light ice, prompting adjustments to their descent altitude. Another aircraft is cleared for an instrument landing system (ILS) approach, indicating preparations for landing. These are routine communications, but passengers may experience slight delays due to weather conditions.\n\n"
     }
-  ]
+]

@@ -70,14 +70,14 @@ for file_path in file_paths:
     response_dict["text"] = title_extract[1]
     max_id = max_id + 1
 
-    with open("../app/data/data.json", 'r') as f:
+    with open("../app/data/important.json", 'r') as f:
         entries = json.load(f)
     
     entries.append(response_dict)
     
     json_object = json.dumps(entries, indent=4)
 
-    with open("../app/data/data.json", "w") as outfile:
+    with open("../app/data/important.json", "w") as outfile:
         outfile.write(json_object)
 
 

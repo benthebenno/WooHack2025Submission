@@ -1,17 +1,7 @@
- [
+[
     {
-      "id": "1",
-      "title": "CMH",
-      "text": "text fefefkeofkeofkefokefoekfoekf"
-    },
-    {
-      "id": "2",
-      "title": "Title",
-      "text": "text fefefkefefefofkeofkefokefoekfoebfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffkf"
-    },
-    {
-      "id": "3",
-      "title": "Title",
-      "text": "text fefefkeofkeofkebfbfbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffokefoekfoekf"
+        "title": " Runway assignments and approach updates",
+        "id": 0,
+        "text": "The air traffic control audio primarily involves communication between controllers and pilots about runway assignments and approach clearances. Several planes are being directed to runway 28 Right for landing, with controllers providing updated weather information (wind speed and direction) and navigational instructions. Some aircraft are cleared for specific approach procedures like the \"ILS 28 Right\" or \"RNAV 23 Left,\" guiding them safely to their landing paths. Pilots are being given altitude and heading instructions to ensure proper separation and alignment with the runways.\nThere are no expected effects on the average airport go-er."
     }
-  ]
+]
