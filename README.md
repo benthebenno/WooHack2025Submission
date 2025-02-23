@@ -24,11 +24,6 @@ Note: The backend has been set up to mimic how this app would work given the pro
 
 To start you need to create a .env file in the backend directory. To do this please navigate to the backend directory and use the following command:
 
-After installing those two programs, run npm -i (to install all expo dependencies), then run pip install -r ./requirements.txt while inside the backend folder (this will install all the backend dependencies)
-
-To build the expo app, run npm start while in the app directory, then either run the program through an emulator or the expo app on your phone.
-
-To start the backend you need to create a .env file in the backend directory. To do this please navigate to the backend directory and use the following command:
 
 `touch .env`
 
@@ -36,10 +31,30 @@ Next make your way [here](https://ai.google.dev/gemini-api/docs/api-key) to get 
 
 API_KEY = Whatever_Your_API_Key_Is
 
-Once thats all set up we need to create a python virtual environment. To do this 
+Once thats all set up we need to create a python virtual environment. First make sure youre in the backend directory. Next run the following command: 
+
+```python -m venv ./venv```
+
+Next we need to activate the virtual environment. The instructions for these differ for linux/mac and windows.
+
+#### Linux/Mac
+
+Run the following command:
+
+```source venv/bin/activate```
+
+#### Windows 
+
+Run the following command: 
+
+```venv\Scripts\activate.bat```
+
+
+Once youre in your python virtual environment install the dependencies with the following command:
+
+```pip install -r requirements.txt```
+
+Your backend should be all ready to go now! :)
 
 At the moment the backend and front end work independently of each other, in the future we would integrate the two into a live update system.
 
-## Future
-
-In the future we hope SkyWatch will hopefully transform the aviation industry into a safer more transparent place. We hope to achieve this goal by enabling passengers to report safety concerns and incidents to create a community-driven safety network and expanding SkyWatch to work internationally, translating ATC communications across different languages and flight regions.
