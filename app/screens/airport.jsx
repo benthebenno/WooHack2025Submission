@@ -7,6 +7,9 @@ import InfoList from "../components/infoList";
 import colors from "../constants/colors";
 import impor from "../data/important.json";
 import CLE from "../data/CLE.json";
+import CAK from "../data/CAK.json";
+import CMH from "../data/CMH.json";
+
 export default function Airport() {
   const route = useRoute();
   const search = route.params.searchItem;
@@ -15,11 +18,11 @@ export default function Airport() {
     if (search === "CLE") {
       setData(CLE);
     }
-    if (search === "CLE") {
-      setData(CLE);
+    if (search === "CAK") {
+      setData(CAK);
     }
-    if (search === "CLE") {
-      setData(CLE);
+    if (search === "CMH") {
+      setData(CMH);
     }
   });
   return (

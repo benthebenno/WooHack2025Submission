@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import colors from "../constants/colors";
 import { useEffect } from "react";
 import data from "../data/test.json";
-export default function InfoList() {
-  const [TESTDATA, setTESTDATA] = useState([]);
-  useEffect(() => setTESTDATA(data), []);
+export default function InfoList({ data }) {
   // console.log(data);
 
   const Item = ({ title, text }) => (
@@ -16,7 +14,7 @@ export default function InfoList() {
   );
   return (
     <FlatList
-      data={TESTDATA}
+      data={data}
       renderItem={({ item }) => <Item title={item.title} text={item.text} />}
       keyExtractor={(item) => item.id}
     ></FlatList>
