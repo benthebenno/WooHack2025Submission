@@ -2,14 +2,11 @@ import { View, Text, StyleSheet, FlatList } from "react-native";
 import React, { useState } from "react";
 import colors from "../constants/colors";
 import { useEffect } from "react";
+import data from "../data/test.json";
 export default function InfoList() {
   const [TESTDATA, setTESTDATA] = useState([]);
-  useEffect(() => {
-    setTESTDATA(fetch("./test.json"));
-    // setTESTDATA(JSON.parse("../data/test.json"));
-    console.log(TESTDATA);
-    console.log(TESTDATA);
-  }, []);
+  useEffect(() => setTESTDATA(data), []);
+  // console.log(data);
 
   const Item = ({ title, text }) => (
     <View style={styles.item}>
