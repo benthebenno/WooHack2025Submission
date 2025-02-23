@@ -43,7 +43,7 @@ export default function SearchBar() {
             marginRight: 20,
           }}
         >
-          <Pressable>
+          <Pressable onPress={() => navigation.navigate("Main")}>
             <Ionicons
               name="arrow-back-circle-outline"
               size={36}

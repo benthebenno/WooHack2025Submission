@@ -38,8 +38,12 @@ const styles = StyleSheet.create({
   item: {
     flex: 1,
     backgroundColor: "white",
-    margin: 20,
+    marginTop: 20,
+    marginLeft: 15,
+    marginRight: 15,
     borderRadius: 20,
     padding: 20,
+    borderWidth: 4,
+    borderColor: "grey",
   },
 });

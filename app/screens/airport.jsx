@@ -10,7 +10,16 @@ export default function Airport() {
   return (
     <Screen>
       <SearchBar></SearchBar>
-      <Text style={{ fontSize: 50, color: "white" }}>{search}</Text>
+      <Text
+        style={{
+          fontSize: 50,
+          color: "white",
+          alignSelf: "center",
+          marginTop: 15,
+        }}
+      >
+        {search}
+      </Text>
       <InfoList></InfoList>
     </Screen>
   );
