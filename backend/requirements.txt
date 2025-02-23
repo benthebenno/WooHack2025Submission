@@ -11,3 +11,4 @@ python-dotenv
 librosa
 numpy
 scipy
+noisereduce
