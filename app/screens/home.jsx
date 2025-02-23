@@ -12,16 +12,25 @@ import colors from "../constants/colors";
 import { useNavigation } from "@react-navigation/native";
 import { Animated } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+
 export default function Home() {
   const navigator = useNavigation();
   const planePos = useAnimatedValue(0);
   const planePosUp = useAnimatedValue(0);
   const opacity = useAnimatedValue(0);
+  const bigPlane = useAnimatedValue(0);
 
+  const moveBigPlan = () => {
+    Animated.timing(bigPlane, {
+      toValue: -1100,
+      duration: 4000,
+      useNativeDriver: true,
+    }).start();
+  };
   const movePlane = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(planePos, {
-      toValue: 350,
+      toValue: 325,
       duration: 5000,
       useNativeDriver: true,
     }).start();
@@ -29,7 +38,7 @@ export default function Home() {
 
   const movePlaneUp = () => {
     Animated.timing(planePosUp, {
-      toValue: -875,
+      toValue: -1130,
       duration: 5000,
       useNativeDriver: true,
     }).start();
@@ -45,21 +54,25 @@ export default function Home() {
     movePlaneUp();
     movePlane();
     fadeIn();
+    moveBigPlan();
   });
+
   return (
     <Screen>
-      <View
-        // source={require("../assets/background.png")}
-        style={styles.container}
-        // imageStyle={{ resizeMode: "contain" }}
-      >
+      <View style={styles.container}>
         <Text style={styles.text}>SkyWatch</Text>
+        <View style={{ marginTop: 350 }}></View>
         <Pressable onPress={() => navigator.navigate("Main")}>
           <Animated.View style={[styles.button, { opacity: opacity }]}>
             <Text style={styles.buttonText}>Learn About Your Flight</Text>
           </Animated.View>
         </Pressable>
-        {/* <FontAwesome name="plane" size={24} color="blue" /> */}
+        <View style={{ marginTop: 20 }}></View>
+        <Pressable onPress={() => navigator.navigate("Tutorial")}>
+          <Animated.View style={[styles.button, { opacity: opacity }]}>
+            <Text style={styles.buttonText}>App Tutorial</Text>
+          </Animated.View>
+        </Pressable>
 
         <View style={styles.planeHolder}>
           <Animated.View
@@ -67,7 +80,7 @@ export default function Home() {
               transform: [{ translateX: planePos }, { translateY: planePosUp }],
             }}
           >
-            <FontAwesome name="plane" size={40} color="blue" />
+            <FontAwesome name="plane" size={40} color={colors.plane} />
           </Animated.View>
           <Animated.View
             style={{
@@ -78,16 +91,28 @@ export default function Home() {
               ],
             }}
           >
-            <FontAwesome name="plane" size={40} color="blue" />
+            <FontAwesome name="plane" size={40} color={colors.plane} />
           </Animated.View>
         </View>
+        <Animated.View
+          style={{
+            // alignContent: "center",
+            transform: [{ translateY: bigPlane }],
+          }}
+        >
+          <MaterialCommunityIcons
+            name="shield-airplane"
+            size={300}
+            color="white"
+          />
+        </Animated.View>
       </View>
     </Screen>
   );
 }
 const styles = StyleSheet.create({
   button: {
-    marginTop: 350,
+    // marginTop: 350,
     backgroundColor: colors.font,
     flexShrink: 1,
     // width: 275,

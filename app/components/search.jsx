@@ -29,12 +29,20 @@ export default function SearchBar() {
       useNativeDriver: true,
     }).start();
   };
+  const movePlaneBack = () => {
+    Animated.timing(planePos, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  };
   const HasSearched = () => {
     movePlane();
-    setTimeout(
-      () => navigation.navigate("Airport", { searchItem: value }),
-      3000
-    );
+
+    setTimeout(() => {
+      movePlaneBack();
+      navigation.navigate("Airport", { searchItem: value });
+    }, 2000);
   };
 
   const [data, setData] = useState([
@@ -52,7 +60,7 @@ export default function SearchBar() {
             marginRight: 20,
           }}
         >
-          <Pressable onPress={() => navigation.navigate("Main")}>
+          <Pressable onPress={() => navigation.navigate("Home")}>
             <Ionicons
               name="arrow-back-circle-outline"
               size={36}
@@ -81,7 +89,7 @@ export default function SearchBar() {
             marginLeft: 20,
           }}
         >
-          <FontAwesome5 name="plane" size={24} color="blue" />
+          <FontAwesome5 name="plane" size={24} color={colors.plane} />
         </Animated.View>
       </View>
     </View>
@@ -97,7 +105,7 @@ const styles = StyleSheet.create({
   textInput: { width: "60%" },
   search: {
     width: "90%",
-    backgroundColor: "white",
+    backgroundColor: "#d3d3d3",
     paddingLeft: 20,
     borderRadius: 10,
     paddingTop: 20,

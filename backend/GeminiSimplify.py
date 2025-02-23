@@ -35,7 +35,6 @@ client = genai.Client(api_key=api_key)
 prompt_text = "This is audio from Air Traffic Control. Consider the average person at an aiport. They dont want to learn all the jargon to understand the incoming audio signals, and just want someone to do it for them in a short, concise manner. Please give information that is relevant to the average person at the airport and be as informative as possible. Keep in mind this should be a brief synopsis overviewing whats going on and how the average airport go-er can expect this to effect their experience. In addition before writing anything please come up with a title for the interaction as a whole and preface it with [title] and end it with a $."
 
 
-# Find all `.mp3` files in Processed_Sound/
 file_paths = glob.glob(os.path.join(processed_dir, "*.mp3"))
 
 if not file_paths:
@@ -73,11 +72,9 @@ for file_path in file_paths:
     filename = os.path.basename(file_path)
     print(f" Uploading {filename}...")
 
-    # Upload file to Gemini
     uploaded_file = client.files.upload(file=file_path)
     print(f"Uploaded {filename}: {uploaded_file.uri}")
 
-    # Send transcription request for this file
     response = client.models.generate_content(
         model="gemini-2.0-flash",
         contents=[

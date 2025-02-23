@@ -4,6 +4,7 @@ import Screen from "../components/screen";
 import { useRoute } from "@react-navigation/native";
 import SearchBar from "../components/search";
 import InfoList from "../components/infoList";
+import colors from "../constants/colors";
 export default function Airport() {
   const route = useRoute();
   const search = route.params.searchItem;
@@ -13,7 +14,7 @@ export default function Airport() {
       <Text
         style={{
           fontSize: 50,
-          color: "white",
+          color: colors.font,
           alignSelf: "center",
           marginTop: 15,
         }}

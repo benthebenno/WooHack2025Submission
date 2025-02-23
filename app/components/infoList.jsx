@@ -1,24 +1,13 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
-import React from "react";
-
+import React, { useState } from "react";
+import colors from "../constants/colors";
+import { useEffect } from "react";
+import data from "../data/test.json";
 export default function InfoList() {
-  const TESTDATA = [
-    {
-      id: "1",
-      title: "Title",
-      text: "text fefefkeofkeofkefokefoekfoekf",
-    },
-    {
-      id: "2",
-      title: "Title",
-      text: "text fefefkeofkeofkefokefoekfoebfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffkf",
-    },
-    {
-      id: "3",
-      title: "Title",
-      text: "text fefefkeofkeofkebfbfbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffokefoekfoekf",
-    },
-  ];
+  const [TESTDATA, setTESTDATA] = useState([]);
+  useEffect(() => setTESTDATA(data), []);
+  // console.log(data);
+
   const Item = ({ title, text }) => (
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
@@ -44,6 +33,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 20,
     borderWidth: 4,
-    borderColor: "grey",
+    borderColor: colors.font,
   },
 });
